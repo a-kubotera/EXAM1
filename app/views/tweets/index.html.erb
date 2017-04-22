@@ -1,0 +1,9 @@
+<h1>いんでっくす</h1>
+<h2><%= notice %></h2>
+<% @tweets.each do |tw| %>
+  <p>時間:<%= tw.created_at %></p>
+  <p>本文:<%= tw.content %></p>
+  <p><%=link_to '考え直す',edit_tweet_path(tw.id) %></p>
+  <p><%=link_to '無かったことにする',tweet_path(tw.id),method: :delete, data:{ confirm: '本当に削除しますか？' } %></p>
+<% end %>
+<p><%=link_to 'つぶやく',new_tweet_path %></p>

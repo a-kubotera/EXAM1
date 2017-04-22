@@ -1,0 +1,11 @@
+<h3>以下の内容でよろしいですか？</h3>
+<%= form_for(@tweet) do |f| %>
+  <%= f.hidden_field :content %>
+  <p>本文:<%= @tweet.content %></p>
+  <%= f.submit "つぶやく" %>
+<% end %>
+<%= form_for(@tweet, url: new_tweet_path, method: 'get') do |f| %>
+  <%= f.hidden_field :content %>
+  <%= f.submit "戻る",name:'back' %>
+<% end %>
+  
