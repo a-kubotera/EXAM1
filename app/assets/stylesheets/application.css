@@ -10,6 +10,8 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *　リセットCSS(Normalize)を最初に読み込ませる
  *= require_tree .
+ *= require normalize.css
  *= require_self
  */
