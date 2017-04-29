@@ -12,11 +12,11 @@
         </div>
       </div>
       <div style="width:310px;">
-        <%= f.submit 'この内容でつぶやく', class: 'btn btn-danger btn_size',style:'float:right'%>
+        <%= f.submit 'この内容でつぶやく', class: 'btn btn-danger btn_size cnfbtnL',style:'float:right'%>
     <% end %>
       <%= form_for(@tweet, url: new_tweet_path, method: 'get') do |f| %>
         <%=f.hidden_field :content %>
-        <%=f.submit "入力画面へ戻る" , name: 'back', class: 'btn btn-secondary btn_size',style:'float:right padding-right:5px;' %>
+        <%=f.submit "入力画面へ戻る" , name: 'back', class: 'btn btn-secondary btn_size cnfbtnR',style:'float:right padding-right:5px;' %>
       <% end %>
     </div>  
   </div>
