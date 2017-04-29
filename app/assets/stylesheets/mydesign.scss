@@ -1,0 +1,161 @@
+//application / サイト共通設定
+//twitter bootstrap アイコン用フォント
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url("glyphicons-halflings-regular.eot");
+  src: url("glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), 
+       url("glyphicons-halflings-regular.woff2") format("woff2"), 
+       url("glyphicons-halflings-regular.woff") format("woff"),
+       url("glyphicons-halflings-regular.ttf") format("truetype"), 
+       url("glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg");
+}
+//今回のメインフォント
+@font-face {
+  font-family: 'OmeGothic', sans-serif;
+  src:url('OmePlus-P-Gothic-medium1.00000.ttf') format('truetype'),
+}
+//フォント設定
+@mixin myFont{
+    font-family:'OmeGothic',YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
+}
+//改行を許可
+@mixin acceptBR{
+  word-break: break-all;
+  white-space: pre-line;
+}
+//viewportを基準とした相対値でfont sizeを決める
+//(memo)第一引数で基準となる画面幅のフォントサイズ、第二引数で基準となる画面幅を入力する
+@function get_vw($size, $viewport:320){
+  $rate: 100 / $viewport;
+  @return $rate * $size * 1vw;
+}
+@mixin fz_vw($font_size:10){
+  font-size: $font_size * 1px;
+  font-size: get_vw($font_size);
+}
+
+//レスポンシブデザインに横スクロールバーなど不要也！
+body{overflow-x: hidden;}
+.scrollLock{overflow-y: hidden;}
+//ヘッダー設定
+.headerArea{
+  background:#FFF;
+  font-size:large;
+  height:20px;
+  margin:10px;
+  >ul{
+    margin:0px;
+  }
+  >ul>li{
+    padding:0px 10px;
+    &:hover{
+      border-bottom:5px solid blue;
+      a{
+        color:blue;
+        -webkit-transition: 0.3s ease-in-out;
+        -moz-transition: 0.3s ease-in-out;
+        -o-transition: 0.3s ease-in-out;
+        transition: 0.3s ease-in-out;        
+      }
+    }
+  }
+  .setLink{
+    color:lightsteelblue;
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+    span{
+      font-size:90%;
+      padding-left:5px;
+    }
+  }
+}
+
+//サイトのイメージカラー
+.mainContents{
+    background:aliceblue;
+}
+
+
+//トップページ
+.topPage{
+  position: relative;
+  &img{width:100%;}
+  .msgBox{
+    @include myFont;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    color: white;
+    font-weight: bold;
+    margin:0;
+    padding:0;
+    .title{
+      @include fz_vw(13);
+      }
+    .content{
+      @include fz_vw(6);
+      @include acceptBR;
+    }
+  }
+}
+//Indexの一覧表示設定
+.tweetView{
+    background:white;
+    border-color:whitesmoke;
+    border-style:none;
+    border-radius:10px;
+    padding:10px;
+    margin:0px;
+    margin-bottom:5px;
+    border:none;
+    .tweetDetail{
+        @include acceptBR;
+        @include myFont;
+        padding:7px;
+    }
+}
+//エラーメッセージの追加設定
+.errMsg{
+  font-size:large;
+  font-weight:bolder;
+}
+//
+.setConfirm{
+  padding:10px;
+  border:2px solid green;
+   border-radius:10px;
+    .cnfTitle{
+      color:red;
+    }
+    .cnfContent{
+      color:green;
+    }
+}
+
+//paddingリセット
+.pad_none{
+  padding:0px;
+}
+
+//ボタンサイズを統一
+.btn_size{
+  width:150px;
+  margin:5px 0px;
+}
+//アイコンサイズを要素に合わせてストレッチ
+.setIcon{
+width: 100%;
+    
+}
+//テキストエリアのリサイズ禁止
+.set_txtArea{
+  resize: none;
+}
+
+//Confirm画面で使うfloat設定
+.set_floatL{
+  float:right;
+  
+}

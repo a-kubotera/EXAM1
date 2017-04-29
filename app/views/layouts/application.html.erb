@@ -1,14 +1,55 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Exam1</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head>
+    <title>これはTwitterですか？いいえ違います。</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body class="<%= @bodyCls %>">
+  <header>
+    <div class="container-fluid">
+      <div class="headerArea row">
+        <ul class="list-inline">
+          <li>
+            <%= link_to top_index_path,class:"setLink" do %>
+              <i class="glyphicon glyphicon-home" aria-hidden="true"><span class="hidden-xs">Home</span></i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to tweets_path,class:"setLink" do %>
+              <i class="glyphicon glyphicon-list-alt" aria-hidden="true"><span class="hidden-xs">一覧画面</span></i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_tweet_path,class:"setLink" do %>
+              <i class="glyphicon glyphicon-edit" aria-hidden="true"><span class="hidden-xs">つぶやく</span></i>
+            <% end %>
+          </li>
+          <li class="col-xs-offset-1">
+            <%= link_to tweets_path,class:"setLink" do %>
+              <i class="glyphicon glyphicon-flash" aria-hidden="true"><span class="hidden-xs">モーメント</span></i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to top_index_path,class:"setLink" do %>
+              <i class="glyphicon glyphicon-bell" aria-hidden="true"><span class="hidden-xs">通知</span></i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to top_index_path,class:"setLink" do %>
+              <i class="glyphicon glyphicon-envelope" aria-hidden="true"><span class="hidden-xs">メッセージ</span></i>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <div class="mainContents">
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
+  </div>
+  </body>
 </html>

@@ -11,7 +11,9 @@
  * file per style scope.
  *
  *　リセットCSS(Normalize)を最初に読み込ませる
- *= require_tree .
+ *  読みこむCSSを限定し、そこにすべて記載する
  *= require normalize.css
+ *= require bootstrap_and_overrides.css
+ *= require mydesign.scss
  *= require_self
  */
