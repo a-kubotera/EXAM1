@@ -45,3 +45,6 @@ end
 
 gem 'rails_12factor', group: :production
 gem 'twitter-bootstrap-rails'
+gem 'jquery-turbolinks'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'font-awesome-sass'

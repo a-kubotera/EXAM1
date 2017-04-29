@@ -1,5 +1,6 @@
 class TweetsController < ApplicationController
   before_action:set_tw,only:[:edit,:update,:destroy]
+  before_action:submitBtnName,only:[:edit,:new,:confirm,:update]
   def index
     @tweets = Tweet.all
   end
@@ -23,7 +24,10 @@ class TweetsController < ApplicationController
   
   def confirm
     @tweet = Tweet.new(tw_param)
-    render :new if @tweet.invalid? #成功>>false 失敗:ture    
+    if @tweet.invalid?
+      @sbmitbtn = '確認画面へ'
+      render :new 
+    end 
   end
   
   def edit
@@ -32,7 +36,7 @@ class TweetsController < ApplicationController
   def update
     @tweet.update(tw_param)
     if @tweet.update(tw_param)
-      redirect_to tweets_path, notice: "成功！"  
+      redirect_to tweets_path, notice: "ツイートを更新しました！！"  
     else
        render 'edit'
     end
@@ -49,5 +53,19 @@ class TweetsController < ApplicationController
     end
     def set_tw
       @tweet = Tweet.find(params[:id])
-    end    
+    end
+    def submitBtnName
+      case self.action_name
+        when /new|confirm/
+          @formtitle = "新規ツイート"
+          @sbmitbtn = "確認画面へ"
+          @classAdd = "btn-primary"
+        when /edit|update/
+          @formtitle = "ツイート編集"
+          @sbmitbtn = "更新する"
+          @classAdd = "btn-danger"
+      else
+        puts 'エラー'
+      end
+    end
 end
